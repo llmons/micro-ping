@@ -1,0 +1,31 @@
+syntax = "v1"
+
+type (
+    ReqUploadImage {
+        File string `form:"file"`
+    }
+
+    RespUploadImage {
+    }
+)
+
+type (
+    ReqDeleteBlogImage {
+        Name string `form:"name"`
+    }
+
+    RespDeleteBlogImage {
+    }
+)
+
+@server(
+    prefix :/api/upload
+    group : upload
+)
+service microping-api {
+    @handler UploadImageHandler
+    post /blog (ReqUploadImage) returns (RespUploadImage)
+
+    @handler DeleteBlogImageHandler
+    get /blog/delete (ReqDeleteBlogImage) returns (RespDeleteBlogImage)
+}

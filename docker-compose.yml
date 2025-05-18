@@ -1,0 +1,30 @@
+version: '3.0'
+
+services:
+  micro-ping-mysql:
+    image: mysql
+    container_name: micro-ping-mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql/hmdp.sql:/docker-entrypoint-initdb.d/hmdp.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=hmdp
+
+  micro-ping-redis:
+    image: redis
+    container_name: micro-ping-redis
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=123456
+
+  micro-ping-etcd:
+    image: bitnami/etcd
+    container_name: micro-ping-etcd
+    ports:
+      - "2379:2379"
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://localhost:2379

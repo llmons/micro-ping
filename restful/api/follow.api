@@ -1,0 +1,18 @@
+syntax = "v1"
+
+type (
+    ReqFollow {
+    }
+
+    RespFollow {
+    }
+)
+
+@server(
+    prefix : /api/follow
+    group : follow
+)
+service microping-api {
+    @handler FollowHandler
+    post / (ReqFollow) returns (RespFollow)
+}

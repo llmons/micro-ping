@@ -1,0 +1,60 @@
+syntax = "v1"
+
+type Voucher {
+    Id int64 `json:"id"`
+    ShopId int64 `json:"shop_id"`
+    Title string `json:"title"`
+    Subtitle string `json:"subtitle"`
+    Rules string `json:"rules"`
+    PayPrice int64 `json:"pay_price"`
+    ActualPrice int64 `json:"actual_price"`
+    Type int32 `json:"type"`
+    Status int32 `json:"status"`
+}
+
+type (
+    ReqAddVoucher {
+        Voucher Voucher `json:"voucher"`
+    }
+
+    RespAddVoucher {
+        Id int64 `path:"id"`
+    }
+)
+
+type (
+    ReqAddSeckillVoucher {
+        Voucher Voucher `json:"voucher"`
+    }
+
+    RespAddSeckillVoucher {
+        Id int64 `path:"id"`
+    }
+)
+
+type (
+    ReqGetVoucherByShopId {
+        ShopId int64 `path:"shop_id"`
+    }
+
+    RespGetVoucherByShopId {
+        VoucherList []Voucher `json:"voucher_list"`
+    }
+)
+
+@server(
+    prefix : /api/voucher
+    group : voucher
+)
+service microping-api {
+    @handler AddVoucherHandler
+    post / (ReqAddVoucher) returns (RespAddVoucher)
+
+    @handler AddSeckillVoucherHandler
+    post /seckill (ReqAddSeckillVoucher) returns (RespAddSeckillVoucher)
+
+    @handler GetVoucherByShopIdHandler
+    get /list/:id (ReqGetVoucherByShopId) returns (RespGetVoucherByShopId)
+}
+
+

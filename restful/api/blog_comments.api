@@ -1,0 +1,18 @@
+syntax = "v1"
+
+type (
+    ReqBlogComments {
+    }
+
+    RespBlogComments {
+    }
+)
+
+@server(
+    prefix : /api/blog-comments
+    group : blog_comments
+)
+service microping-api {
+    @handler BlogCommentsHandler
+    post / (ReqBlogComments) returns (RespBlogComments)
+}

@@ -1,0 +1,11 @@
+syntax = "v1"
+
+import "blog.api"
+import "blog_comments.api"
+import "follow.api"
+import "shop.api"
+import "shop_type.api"
+import "upload.api"
+import "user.api"
+import "voucher.api"
+import "voucher_order.api"

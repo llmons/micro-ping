@@ -1,0 +1,80 @@
+syntax = "v1"
+
+type (
+    ReqSendCode {
+        Phone string `json:"phone"`
+    }
+
+    RespSendCode {
+        Code string `json:"code"`
+    }
+)
+
+type (
+    ReqLogin {
+        Phone string `json:"phone"`
+        Code string `json:"code"`
+    }
+
+    RespLogin {
+        Token string `json:"token"`
+    }
+)
+
+type (
+    ReqLogout {
+    }
+
+    RespLogout {
+    }
+)
+
+type (
+    ReqGetMe {
+    }
+
+    RespGetMe {
+    }
+)
+
+type (
+    ReqGetInfo {
+        Id int64 `path:"id"`
+    }
+
+    RespGetInfo {
+        UserInfo {
+            Id int64 `json:"id"`
+            City string `json:"city"`
+            Introduce string `json:"introduce"`
+            Fans int32 `json:"fans"`
+            Followee int32 `json:"followee"`
+            Gender bool `json:"gender"`       // 0: male, 1: female
+            Birthday string `json:"birthday"` // YYYY-MM-DD
+            Credit int32 `json:"credit"`
+            Level bool `json:"level"`         // 0: normal, 1: vip
+        }
+    }
+)
+
+
+@server(
+    prefix : /api/user
+    group : user
+)
+service microping-api {
+    @handler SendCodeHandler
+    post /code (ReqSendCode) returns (RespSendCode)
+
+    @handler LoginHandler
+    post /login (ReqLogin) returns (RespLogin)
+
+    @handler LogoutHandler
+    post /logout (ReqLogout) returns (RespLogout)
+
+    @handler GetMeHandler
+    get /me (ReqGetMe) returns (RespGetMe)
+
+    @handler GetInfoHandler
+    get /info/:id (ReqGetInfo) returns (RespGetInfo)
+}

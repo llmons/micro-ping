@@ -1,0 +1,26 @@
+syntax = "v1"
+
+type ShopType {
+    Id uint64 `json:"id"`
+    Name string `json:"name"`
+    Icon string `json:"icon"` // icon url
+    Sort int64 `json:"sort"`  // sort by this field
+}
+
+type (
+    ReqGetTypeList {
+    }
+
+    RespGetTypeList {
+        TypeList []*ShopType `json:"type_list"`
+    }
+)
+
+@server(
+    prefix : /api/shop-type
+    group : shop_type
+)
+service microping-api {
+    @handler GetTypeListHandler
+    get /list (ReqGetTypeList) returns (RespGetTypeList)
+}

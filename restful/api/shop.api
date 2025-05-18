@@ -1,0 +1,89 @@
+syntax = "v1"
+
+type Shop {
+    Id int64 `json:"id"`
+    Name string `json:"name"`
+    TypeId int64 `json:"type_id"`
+    Images string `json:"images"`           // separated by comma
+    Area string `json:"area"`
+    Address string `json:"address"`
+    X float64 `json:"x"`
+    Y float64 `json:"y"`
+    AvgPrice int64 `json:"avg_price"`
+    Sold int32 `json:"sold"`
+    Comments int32 `json:"comments"`
+    Score int32 `json:"score"`              // 1-5
+    OpenHours string `json:"open_hours"`    // such as 10:00-22:00
+}
+
+type (
+    ReqGetShopById {
+        Id int64 `path:"id"`
+    }
+
+    RespGetShopById {
+        Shop Shop `json:"shop"`
+    }
+)
+
+type (
+    ReqInsertShop {
+        Shop Shop `json:"shop"`
+    }
+
+    RespInsertShop {
+        Id int64 `path:"id"`
+    }
+)
+
+type (
+    ReqUpdateShop {
+        Shop Shop `json:"shop"`
+    }
+
+    RespUpdateShop {
+    }
+)
+
+type (
+    ReqGetShopByType {
+        TypeId int64 `form:"typeId"`
+        Current int64 `form:"current,default=1"`
+    }
+
+    RespGetShopByType {
+        ShopList []Shop `json:"shop_list"`
+    }
+)
+
+type (
+    ReqGetShopByName {
+        Name string `form:"name,optional"`
+        Current int64 `form:"current,default=1"`
+    }
+
+    RespGetShopByName {
+        ShopList []Shop `json:"shop_list"`
+    }
+)
+
+@server(
+    prefix : /api/shop
+    group : shop
+)
+service microping-api {
+    @handler GetShopByIdHandler
+    get /:id (ReqGetShopById) returns (RespGetShopById)
+
+    @handler InsertShopHandler
+    post / (ReqInsertShop) returns (RespInsertShop)
+
+    @handler UpdateShopHandler
+    put / (ReqUpdateShop) returns (RespUpdateShop)
+
+    @handler GetShopByTypeHandler
+    get /of/type (ReqGetShopByType) returns (RespGetShopByType)
+
+    @handler GetShopByNameHandler
+    get /of/name (ReqGetShopByName) returns (RespGetShopByName)
+}

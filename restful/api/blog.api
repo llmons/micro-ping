@@ -1,0 +1,70 @@
+syntax = "v1"
+
+type Blog {
+    Id int64 `json:"id"`
+    ShopId int64 `json:"shop_id"`
+    UserId int64 `json:"user_id"`
+    Title string `json:"title"`
+    Images string `json:"images"`   // separated by comma
+    Content string `json:"content"`
+    Liked int64 `json:"liked"`
+    Comments int64 `json:"comments"`
+}
+
+type (
+    ReqInsertBlog {
+        Blog Blog `json:"blog"`
+    }
+
+    RespInsertBlog {
+        Id int64 `path:"id"`
+    }
+)
+
+type (
+    ReqLikeBlog {
+        BlogId int64 `json:"blog_id"`
+    }
+
+    RespLikeBlog {
+    }
+)
+
+type (
+    ReqGetMyBlog {
+        Current int64 `form:"current,default=1"`
+    }
+
+    RespGetMyBlog {
+        BlogList []Blog `json:"blog_list"`
+    }
+)
+
+type (
+    ReqGetHotBlog {
+        Current int64 `form:"current,default=1"`
+    }
+
+    RespGetHotBlog {
+        BlogList []Blog `json:"blog_list"`
+    }
+)
+
+
+@server(
+    prefix: /api/blog
+    group : blog
+)
+service microping-api {
+    @handler BlogHandler
+    post / (ReqInsertBlog) returns (RespInsertBlog)
+
+    @handler BlogLikeHandler
+    put /like/:id (ReqLikeBlog) returns (RespLikeBlog)
+
+    @handler GetMyBlogHandler
+    get /of/me (ReqGetMyBlog) returns (RespGetMyBlog)
+
+    @handler GetHotBlogHandler
+    get /hot (ReqGetHotBlog) returns (RespGetHotBlog)
+}

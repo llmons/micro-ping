@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package shop_type;
+option go_package = "./shop_type";
+
+message ShopType {
+  uint64 id = 1;
+  string name = 2;
+  string icon = 3;
+  int64 sort = 4;
+}
+
+message ReqShopType {
+}
+
+message RespShopType {
+  repeated ShopType shop_type_list = 1;
+}
+
+service Shop_type {
+  rpc GetTypeList(ReqShopType) returns(RespShopType);
+}

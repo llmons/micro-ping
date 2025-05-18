@@ -1,0 +1,19 @@
+syntax = "v1"
+
+type (
+    ReqSeckillVoucher {
+        VoucherId int64 `path:"voucher_id"`
+    }
+
+    RespSeckillVoucher {
+    }
+)
+
+@server(
+    prefix : /api/voucher-order
+    group : voucher_order
+)
+service microping-api {
+    @handler SeckillVoucherHandler
+    post /seckill/:id (ReqSeckillVoucher) returns (RespSeckillVoucher)
+}

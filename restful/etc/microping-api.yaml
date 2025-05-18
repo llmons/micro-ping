@@ -1,0 +1,9 @@
+Name: microping-api
+Host: 0.0.0.0
+Port: 8888
+
+ShopType:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: shop_type.rpc
