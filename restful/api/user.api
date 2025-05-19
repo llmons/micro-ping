@@ -59,8 +59,8 @@ type (
 
 
 @server(
-    prefix : /api/user
-    group : user
+    prefix: /api/user
+    group: userPublic
 )
 service microping-api {
     @handler SendCodeHandler
@@ -68,7 +68,14 @@ service microping-api {
 
     @handler LoginHandler
     post /login (ReqLogin) returns (RespLogin)
+}
 
+@server(
+    prefix: /api/user
+    group: userPrivate
+    jwt: Auth
+)
+service microping-api {
     @handler LogoutHandler
     post /logout (ReqLogout) returns (RespLogout)
 

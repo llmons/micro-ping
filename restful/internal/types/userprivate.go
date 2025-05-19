@@ -10,16 +10,7 @@ type ReqGetInfo struct {
 type ReqGetMe struct {
 }
 
-type ReqLogin struct {
-	Phone string `json:"phone"`
-	Code  string `json:"code"`
-}
-
 type ReqLogout struct {
-}
-
-type ReqSendCode struct {
-	Phone string `json:"phone"`
 }
 
 type RespGetInfo struct {
@@ -39,13 +30,5 @@ type RespGetInfo struct {
 type RespGetMe struct {
 }
 
-type RespLogin struct {
-	Token string `json:"token"`
-}
-
 type RespLogout struct {
-}
-
-type RespSendCode struct {
-	Code string `json:"code"`
 }

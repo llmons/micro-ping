@@ -1,4 +1,4 @@
-package user
+package userPrivate
 
 import (
 	"context"
@@ -9,21 +9,21 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type GetInfoLogic struct {
+type LogoutLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewGetInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetInfoLogic {
-	return &GetInfoLogic{
+func NewLogoutLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LogoutLogic {
+	return &LogoutLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *GetInfoLogic) GetInfo(req *types.ReqGetInfo) (resp *types.RespGetInfo, err error) {
+func (l *LogoutLogic) Logout(req *types.ReqLogout) (resp *types.RespLogout, err error) {
 	// todo: add your logic here and delete this line
 
 	return

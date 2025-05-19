@@ -12,7 +12,8 @@ import (
 	shop "micro-ping/restful/internal/handler/shop"
 	shop_type "micro-ping/restful/internal/handler/shop_type"
 	upload "micro-ping/restful/internal/handler/upload"
-	user "micro-ping/restful/internal/handler/user"
+	userPrivate "micro-ping/restful/internal/handler/userPrivate"
+	userPublic "micro-ping/restful/internal/handler/userPublic"
 	voucher "micro-ping/restful/internal/handler/voucher"
 	voucher_order "micro-ping/restful/internal/handler/voucher_order"
 	"micro-ping/restful/internal/svc"
@@ -130,29 +131,36 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodPost,
-				Path:    "/code",
-				Handler: user.SendCodeHandler(serverCtx),
-			},
-			{
 				Method:  http.MethodGet,
 				Path:    "/info/:id",
-				Handler: user.GetInfoHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/login",
-				Handler: user.LoginHandler(serverCtx),
+				Handler: userPrivate.GetInfoHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
 				Path:    "/logout",
-				Handler: user.LogoutHandler(serverCtx),
+				Handler: userPrivate.LogoutHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
 				Path:    "/me",
-				Handler: user.GetMeHandler(serverCtx),
+				Handler: userPrivate.GetMeHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),
+		rest.WithPrefix("/api/user"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/code",
+				Handler: userPublic.SendCodeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/login",
+				Handler: userPublic.LoginHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/api/user"),

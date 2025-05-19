@@ -1,11 +1,11 @@
-package user
+package userPublic
 
 import (
 	"context"
+	"micro-ping/service/user/user"
 
 	"micro-ping/restful/internal/svc"
 	"micro-ping/restful/internal/types"
-	"micro-ping/service/user/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

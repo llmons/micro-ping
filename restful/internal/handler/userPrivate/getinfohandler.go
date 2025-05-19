@@ -1,10 +1,10 @@
-package user
+package userPrivate
 
 import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"micro-ping/restful/internal/logic/user"
+	"micro-ping/restful/internal/logic/userPrivate"
 	"micro-ping/restful/internal/svc"
 	"micro-ping/restful/internal/types"
 )
@@ -17,7 +17,7 @@ func GetInfoHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := user.NewGetInfoLogic(r.Context(), svcCtx)
+		l := userPrivate.NewGetInfoLogic(r.Context(), svcCtx)
 		resp, err := l.GetInfo(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
