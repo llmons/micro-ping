@@ -8,5 +8,5 @@ import (
 type Config struct {
 	rest.RestConf
 	ShopTypeRpcConf zrpc.RpcClientConf
-	// UserRpcConf     zrpc.RpcClientConf
+	UserRpcConf     zrpc.RpcClientConf
 }

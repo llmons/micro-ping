@@ -2,5 +2,13 @@ Name: user.rpc
 ListenOn: 0.0.0.0:8080
 Etcd:
   Hosts:
-  - 127.0.0.1:2379
+    - 127.0.0.1:2379
   Key: user.rpc
+
+Datasource: "root:123456@tcp(localhost:3306)/hmdp?charset=utf8mb4&parseTime=True&loc=Local"
+Table: tb_shop_type
+
+Redis:
+  Host: localhost:6379
+  Password: 123456
+  Key: user

@@ -7,8 +7,9 @@ ShopTypeRpcConf:
     Hosts:
       - localhost:2379
     Key: shoptype.rpc
-# UserRpcConf:
-#   Etcd:
-#     Hosts:
-#       - localhost:2379
-#     Key: user.rpc
+
+UserRpcConf:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: user.rpc

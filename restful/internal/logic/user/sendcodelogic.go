@@ -5,6 +5,7 @@ import (
 
 	"micro-ping/restful/internal/svc"
 	"micro-ping/restful/internal/types"
+	"micro-ping/service/user/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -24,7 +25,16 @@ func NewSendCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SendCode
 }
 
 func (l *SendCodeLogic) SendCode(req *types.ReqSendCode) (resp *types.RespSendCode, err error) {
-	// todo: add your logic here and delete this line
+	rpcResp, err := l.svcCtx.UserRpc.SendCode(l.ctx, &user.ReqSendCode{
+		Phone: req.Phone,
+	})
+	if err != nil {
+		l.Errorf("SendCode rpc error: %v", err)
+		return nil, err
+	}
 
+	resp = &types.RespSendCode{
+		Code: rpcResp.Code,
+	}
 	return
 }

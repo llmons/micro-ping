@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"errors"
+	"regexp"
 
 	"micro-ping/service/user/internal/svc"
 	"micro-ping/service/user/user"
@@ -24,7 +26,11 @@ func NewSendCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SendCode
 }
 
 func (l *SendCodeLogic) SendCode(in *user.ReqSendCode) (*user.RespSendCode, error) {
-	// todo: add your logic here and delete this line
-
+	// check phone
+	pattern := regexp.MustCompile(`^1[3-9]\d{9}$`)
+	if !pattern.MatchString(in.Phone) {
+		l.Errorf("invalid phone number: %s", in.Phone)
+		return nil, errors.New("invalid phone number")
+	}
 	return &user.RespSendCode{}, nil
 }
