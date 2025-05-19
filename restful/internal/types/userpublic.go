@@ -13,7 +13,8 @@ type ReqSendCode struct {
 }
 
 type RespLogin struct {
-	Token string `json:"token"`
+	AccessToken  string `json:"access_token"`
+	AccessExpire int64  `json:"access_expire"`
 }
 
 type RespSendCode struct {

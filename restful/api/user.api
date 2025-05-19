@@ -17,7 +17,8 @@ type (
     }
 
     RespLogin {
-        Token string `json:"token"`
+        AccessToken string `json:"access_token"`
+        AccessExpire int64 `json:"access_expire"`
     }
 )
 
