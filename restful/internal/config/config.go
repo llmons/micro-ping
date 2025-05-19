@@ -7,5 +7,5 @@ import (
 
 type Config struct {
 	rest.RestConf
-	ShopType zrpc.RpcClientConf
+	ShopTypeRpcConf zrpc.RpcClientConf
 }

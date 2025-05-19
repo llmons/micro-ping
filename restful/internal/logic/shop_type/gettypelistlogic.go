@@ -25,7 +25,7 @@ func NewGetTypeListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetTy
 }
 
 func (l *GetTypeListLogic) GetTypeList(req *types.ReqGetTypeList) (resp *types.RespGetTypeList, err error) {
-	rpcResp, err := l.svcCtx.ShopType.GetTypeList(l.ctx, &shoptypeclient.ReqShopType{})
+	rpcResp, err := l.svcCtx.ShopTypeRpc.GetTypeList(l.ctx, &shoptypeclient.ReqShopType{})
 	if err != nil {
 		l.Logger.Errorf("get type list failed, err: %v", err)
 		return nil, err

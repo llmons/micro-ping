@@ -1,19 +1,20 @@
 package svc
 
 import (
-	"github.com/zeromicro/go-zero/zrpc"
 	"restful/internal/config"
 	"shop_type/shoptypeclient"
+
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {
-	Config   config.Config
-	ShopType shoptypeclient.ShopTypeZrpcClient
+	Config      config.Config
+	ShopTypeRpc shoptypeclient.ShopTypeZrpcClient
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
-		Config:   c,
-		ShopType: shoptypeclient.NewShopTypeZrpcClient(zrpc.MustNewClient(c.ShopType)),
+		Config:      c,
+		ShopTypeRpc: shoptypeclient.NewShopTypeZrpcClient(zrpc.MustNewClient(c.ShopTypeRpcConf)),
 	}
 }
