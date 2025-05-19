@@ -28,6 +28,9 @@ type RespGetInfo struct {
 }
 
 type RespGetMe struct {
+	Phone    string `json:"phone"`
+	Nickname string `json:"nickname"`
+	Icon     string `json:"icon"`
 }
 
 type RespLogout struct {

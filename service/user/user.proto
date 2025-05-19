@@ -33,6 +33,9 @@ message ReqGetMe{
 }
 
 message RespGetMe{
+  string phone = 1;
+  string nickname = 2;
+  string icon = 3;
 }
 
 // GetInfo

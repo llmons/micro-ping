@@ -58,6 +58,9 @@ func (l *LoginLogic) Login(in *user.ReqLogin) (*user.RespLogin, error) {
 		l.Errorf("FindOneByPhone error: %v", err)
 		return nil, err
 	}
+
+	fmt.Println(userRecord)
+
 	if userRecord != nil {
 		return &user.RespLogin{}, nil
 	}

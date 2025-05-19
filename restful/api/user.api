@@ -35,6 +35,9 @@ type (
     }
 
     RespGetMe {
+        Phone string `json:"phone"`
+        Nickname string `json:"nickname"`
+        Icon string `json:"icon"`
     }
 )
 

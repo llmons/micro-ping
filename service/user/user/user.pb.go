@@ -311,6 +311,9 @@ func (*ReqGetMe) Descriptor() ([]byte, []int) {
 
 type RespGetMe struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Phone         string                 `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
+	Nickname      string                 `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	Icon          string                 `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -343,6 +346,27 @@ func (x *RespGetMe) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RespGetMe.ProtoReflect.Descriptor instead.
 func (*RespGetMe) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RespGetMe) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *RespGetMe) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+func (x *RespGetMe) GetIcon() string {
+	if x != nil {
+		return x.Icon
+	}
+	return ""
 }
 
 // GetInfo
@@ -560,8 +584,11 @@ const file_user_proto_rawDesc = "" +
 	"\n" +
 	"RespLogout\"\n" +
 	"\n" +
-	"\bReqGetMe\"\v\n" +
-	"\tRespGetMe\"\x1c\n" +
+	"\bReqGetMe\"Q\n" +
+	"\tRespGetMe\x12\x14\n" +
+	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x1a\n" +
+	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x12\n" +
+	"\x04icon\x18\x03 \x01(\tR\x04icon\"\x1c\n" +
 	"\n" +
 	"ReqGetInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\xde\x01\n" +

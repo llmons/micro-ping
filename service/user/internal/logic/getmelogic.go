@@ -24,7 +24,5 @@ func NewGetMeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetMeLogic 
 }
 
 func (l *GetMeLogic) GetMe(in *user.ReqGetMe) (*user.RespGetMe, error) {
-	// todo: add your logic here and delete this line
-
 	return &user.RespGetMe{}, nil
 }
