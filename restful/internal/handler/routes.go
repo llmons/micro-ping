@@ -6,16 +6,16 @@ package handler
 import (
 	"net/http"
 
-	blog "restful/internal/handler/blog"
-	blog_comments "restful/internal/handler/blog_comments"
-	follow "restful/internal/handler/follow"
-	shop "restful/internal/handler/shop"
-	shop_type "restful/internal/handler/shop_type"
-	upload "restful/internal/handler/upload"
-	user "restful/internal/handler/user"
-	voucher "restful/internal/handler/voucher"
-	voucher_order "restful/internal/handler/voucher_order"
-	"restful/internal/svc"
+	blog "micro-ping/restful/internal/handler/blog"
+	blog_comments "micro-ping/restful/internal/handler/blog_comments"
+	follow "micro-ping/restful/internal/handler/follow"
+	shop "micro-ping/restful/internal/handler/shop"
+	shop_type "micro-ping/restful/internal/handler/shop_type"
+	upload "micro-ping/restful/internal/handler/upload"
+	user "micro-ping/restful/internal/handler/user"
+	voucher "micro-ping/restful/internal/handler/voucher"
+	voucher_order "micro-ping/restful/internal/handler/voucher_order"
+	"micro-ping/restful/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

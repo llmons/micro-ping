@@ -4,9 +4,9 @@ import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"restful/internal/logic/voucher_order"
-	"restful/internal/svc"
-	"restful/internal/types"
+	"micro-ping/restful/internal/logic/voucher_order"
+	"micro-ping/restful/internal/svc"
+	"micro-ping/restful/internal/types"
 )
 
 func SeckillVoucherHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {

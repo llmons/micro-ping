@@ -2,7 +2,7 @@ package svc
 
 import (
 	"micro-ping/service/model"
-	"shop_type/internal/config"
+	"micro-ping/service/shop_type/internal/config"
 
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )

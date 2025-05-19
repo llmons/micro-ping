@@ -4,9 +4,9 @@ import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"restful/internal/logic/shop_type"
-	"restful/internal/svc"
-	"restful/internal/types"
+	"micro-ping/restful/internal/logic/shop_type"
+	"micro-ping/restful/internal/svc"
+	"micro-ping/restful/internal/types"
 )
 
 func GetTypeListHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {

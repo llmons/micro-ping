@@ -7,9 +7,9 @@ package server
 import (
 	"context"
 
-	"shop_type/internal/logic"
-	"shop_type/internal/svc"
-	"shop_type/shop_type"
+	"micro-ping/service/shop_type/internal/logic"
+	"micro-ping/service/shop_type/internal/svc"
+	"micro-ping/service/shop_type/shop_type"
 )
 
 type ShopTypeServer struct {

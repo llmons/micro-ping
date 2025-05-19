@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"shop_type/internal/config"
-	"shop_type/internal/server"
-	"shop_type/internal/svc"
-	"shop_type/shop_type"
+	"micro-ping/service/shop_type/internal/config"
+	"micro-ping/service/shop_type/internal/server"
+	"micro-ping/service/shop_type/internal/svc"
+	"micro-ping/service/shop_type/shop_type"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

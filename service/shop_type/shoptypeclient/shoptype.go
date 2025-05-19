@@ -7,7 +7,7 @@ package shoptypeclient
 import (
 	"context"
 
-	"shop_type/shop_type"
+	"micro-ping/service/shop_type/shop_type"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

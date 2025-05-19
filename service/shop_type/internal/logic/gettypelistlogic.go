@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"shop_type/internal/svc"
-	"shop_type/shop_type"
+	"micro-ping/service/shop_type/internal/svc"
+	"micro-ping/service/shop_type/shop_type"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

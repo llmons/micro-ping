@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package user;
+option go_package="./user";
+
+// SendCode
+message ReqSendCode {
+  string phone = 1;
+}
+
+message RespSendCode {
+  string code = 1;
+}
+
+// Login
+message ReqLogin {
+  string phone = 1;
+  string code = 2;
+}
+
+message RespLogin {
+  string token = 1;
+}
+
+// Logout
+message ReqLogout {
+}
+
+message RespLogout {
+}
+
+// GetMe
+message ReqGetMe{
+}
+
+message RespGetMe{
+}
+
+// GetInfo
+message ReqGetInfo{
+  string id = 1;
+}
+
+message UserInfo{
+  string id = 1;
+  string city = 2;
+  string introduce = 3;
+  int32 fans = 4;
+  int32 followee = 5;
+  bool gender = 6;
+  string birthday = 7;
+  int32 credit = 8;
+  bool level = 9;
+}
+
+message RespGetInfo{
+  UserInfo userInfo = 1;
+}
+
+
+service User {
+  rpc SendCode(ReqSendCode) returns(RespSendCode);
+  rpc Login(ReqLogin) returns(RespLogin);
+  rpc LoginOut(ReqLogout) returns(RespLogout);
+  rpc GetMe(ReqGetMe) returns(RespGetMe);
+  rpc GetInfo(ReqGetInfo) returns(RespGetInfo);
+}
+
+

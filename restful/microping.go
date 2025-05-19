@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"restful/internal/config"
-	"restful/internal/handler"
-	"restful/internal/svc"
+	"micro-ping/restful/internal/config"
+	"micro-ping/restful/internal/handler"
+	"micro-ping/restful/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"

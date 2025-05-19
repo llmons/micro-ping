@@ -3,8 +3,8 @@ package blog
 import (
 	"context"
 
-	"restful/internal/svc"
-	"restful/internal/types"
+	"micro-ping/restful/internal/svc"
+	"micro-ping/restful/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

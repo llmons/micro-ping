@@ -2,10 +2,10 @@ package shop_type
 
 import (
 	"context"
-	"shop_type/shoptypeclient"
 
-	"restful/internal/svc"
-	"restful/internal/types"
+	"micro-ping/restful/internal/svc"
+	"micro-ping/restful/internal/types"
+	"micro-ping/service/shop_type/shoptypeclient"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

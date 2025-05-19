@@ -4,9 +4,9 @@ import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"restful/internal/logic/follow"
-	"restful/internal/svc"
-	"restful/internal/types"
+	"micro-ping/restful/internal/logic/follow"
+	"micro-ping/restful/internal/svc"
+	"micro-ping/restful/internal/types"
 )
 
 func FollowHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {

@@ -1,11 +1,12 @@
-Name: shop_type.rpc
+Name: shoptype.rpc
 ListenOn: 0.0.0.0:8080
 Etcd:
   Hosts:
     - 127.0.0.1:2379
-  Key: shop_type.rpc
+  Key: shoptype.rpc
 
-Datasource: root:123456@tcp(localhost:3306)/hmdp?charset=utf8mb4&parseTime=True&loc=Local
+Datasource: "root:123456@tcp(localhost:3306)/hmdp?charset=utf8mb4&parseTime=True&loc=Local"
 Table: tb_shop_type
+
 Cache:
   - Host: localhost:6379
