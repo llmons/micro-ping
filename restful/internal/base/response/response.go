@@ -8,7 +8,7 @@ import (
 )
 
 type Response struct {
-	Suceess  bool        `json:"success"`
+	Success  bool        `json:"success"`
 	Data     interface{} `json:"data,omitempty"`
 	ErrorMsg string      `json:"errorMsg,omitempty"`
 	Total    int64       `json:"total,omitempty"`
@@ -16,7 +16,7 @@ type Response struct {
 
 func Success(data interface{}) *Response {
 	return &Response{
-		Suceess:  true,
+		Success:  true,
 		Data:     data,
 		ErrorMsg: "",
 		Total:    0,
@@ -25,7 +25,7 @@ func Success(data interface{}) *Response {
 
 func Fail(err string) *Response {
 	return &Response{
-		Suceess:  false,
+		Success:  false,
 		Data:     nil,
 		ErrorMsg: err,
 		Total:    0,
