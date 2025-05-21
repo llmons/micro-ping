@@ -24,5 +24,15 @@ func NewGetMeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetMeLogic 
 }
 
 func (l *GetMeLogic) GetMe(in *user.ReqGetMe) (*user.RespGetMe, error) {
-	return &user.RespGetMe{}, nil
+	one, err := l.svcCtx.Model.FindOne(l.ctx, in.UserId)
+	if err != nil {
+		l.Errorf("failed to find user: %v", err)
+		return nil, err
+	}
+
+	return &user.RespGetMe{
+		Phone:    one.Phone,
+		Nickname: one.NickName,
+		Icon:     one.Icon,
+	}, nil
 }

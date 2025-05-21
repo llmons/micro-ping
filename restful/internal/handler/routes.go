@@ -6,128 +6,14 @@ package handler
 import (
 	"net/http"
 
-	blog "micro-ping/restful/internal/handler/blog"
-	blog_comments "micro-ping/restful/internal/handler/blog_comments"
-	follow "micro-ping/restful/internal/handler/follow"
-	shop "micro-ping/restful/internal/handler/shop"
-	shop_type "micro-ping/restful/internal/handler/shop_type"
-	upload "micro-ping/restful/internal/handler/upload"
 	userPrivate "micro-ping/restful/internal/handler/userPrivate"
 	userPublic "micro-ping/restful/internal/handler/userPublic"
-	voucher "micro-ping/restful/internal/handler/voucher"
-	voucher_order "micro-ping/restful/internal/handler/voucher_order"
 	"micro-ping/restful/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/",
-				Handler: blog.BlogHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/hot",
-				Handler: blog.GetHotBlogHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/like/:id",
-				Handler: blog.BlogLikeHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/of/me",
-				Handler: blog.GetMyBlogHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/blog"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/",
-				Handler: blog_comments.BlogCommentsHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/blog-comments"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/",
-				Handler: follow.FollowHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/follow"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/",
-				Handler: shop.InsertShopHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/",
-				Handler: shop.UpdateShopHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/:id",
-				Handler: shop.GetShopByIdHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/of/name",
-				Handler: shop.GetShopByNameHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/of/type",
-				Handler: shop.GetShopByTypeHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/shop"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodGet,
-				Path:    "/list",
-				Handler: shop_type.GetTypeListHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/shop-type"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/blog",
-				Handler: upload.UploadImageHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/blog/delete",
-				Handler: upload.DeleteBlogImageHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/upload"),
-	)
-
 	server.AddRoutes(
 		[]rest.Route{
 			{
@@ -146,7 +32,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: userPrivate.GetMeHandler(serverCtx),
 			},
 		},
-		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithJwt(serverCtx.Config.JwtAuth.AccessSecret),
 		rest.WithPrefix("/api/user"),
 	)
 
@@ -164,37 +50,5 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 		},
 		rest.WithPrefix("/api/user"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/",
-				Handler: voucher.AddVoucherHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/list/:id",
-				Handler: voucher.GetVoucherByShopIdHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPost,
-				Path:    "/seckill",
-				Handler: voucher.AddSeckillVoucherHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/voucher"),
-	)
-
-	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/seckill/:id",
-				Handler: voucher_order.SeckillVoucherHandler(serverCtx),
-			},
-		},
-		rest.WithPrefix("/api/voucher-order"),
 	)
 }

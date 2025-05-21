@@ -59,14 +59,14 @@ func (l *LoginLogic) Login(in *user.ReqLogin) (*user.RespLogin, error) {
 		return nil, err
 	}
 
-	fmt.Println(userRecord)
-
 	if userRecord != nil {
-		return &user.RespLogin{}, nil
+		return &user.RespLogin{
+			UserId: userRecord.Id,
+		}, nil
 	}
 
 	// register user
-	_, err = l.svcCtx.Model.Insert(l.ctx, &model.TbUser{
+	result, err := l.svcCtx.Model.Insert(l.ctx, &model.TbUser{
 		Phone:    in.Phone,
 		Password: stringx.Randn(16),
 		NickName: stringx.Randn(5),
@@ -77,5 +77,12 @@ func (l *LoginLogic) Login(in *user.ReqLogin) (*user.RespLogin, error) {
 		return nil, err
 	}
 
-	return &user.RespLogin{}, nil
+	useId, err := result.LastInsertId()
+	if err != nil {
+		l.Errorf("LastInsertId error: %v", err)
+		return nil, err
+	}
+	return &user.RespLogin{
+		UserId: uint64(useId),
+	}, nil
 }

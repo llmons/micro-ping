@@ -165,6 +165,7 @@ func (x *ReqLogin) GetCode() string {
 
 type RespLogin struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -197,6 +198,13 @@ func (x *RespLogin) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RespLogin.ProtoReflect.Descriptor instead.
 func (*RespLogin) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *RespLogin) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 // Logout
@@ -275,6 +283,7 @@ func (*RespLogout) Descriptor() ([]byte, []int) {
 // GetMe
 type ReqGetMe struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -307,6 +316,13 @@ func (x *ReqGetMe) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ReqGetMe.ProtoReflect.Descriptor instead.
 func (*ReqGetMe) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ReqGetMe) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 type RespGetMe struct {
@@ -578,13 +594,14 @@ const file_user_proto_rawDesc = "" +
 	"\x04code\x18\x01 \x01(\tR\x04code\"4\n" +
 	"\bReqLogin\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\"\v\n" +
-	"\tRespLogin\"\v\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\"$\n" +
+	"\tRespLogin\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"\v\n" +
 	"\tReqLogout\"\f\n" +
 	"\n" +
-	"RespLogout\"\n" +
-	"\n" +
-	"\bReqGetMe\"Q\n" +
+	"RespLogout\"#\n" +
+	"\bReqGetMe\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"Q\n" +
 	"\tRespGetMe\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x12\n" +

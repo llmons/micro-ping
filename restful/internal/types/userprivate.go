@@ -8,9 +8,11 @@ type ReqGetInfo struct {
 }
 
 type ReqGetMe struct {
+	Autherization string `header:"Authorization"`
 }
 
 type ReqLogout struct {
+	Autherization string `header:"Authorization"`
 }
 
 type RespGetInfo struct {

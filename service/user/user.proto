@@ -19,6 +19,7 @@ message ReqLogin {
 }
 
 message RespLogin {
+  uint64 user_id = 1;
 }
 
 // Logout
@@ -30,6 +31,7 @@ message RespLogout {
 
 // GetMe
 message ReqGetMe{
+  uint64 user_id = 1;
 }
 
 message RespGetMe{
