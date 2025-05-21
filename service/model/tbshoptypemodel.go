@@ -29,7 +29,7 @@ func NewTbShopTypeModel(conn sqlx.SqlConn, c cache.CacheConf, opts ...cache.Opti
 
 func (m *defaultTbShopTypeModel) RetrieveAll() ([]*TbShopType, error) {
 	var resp []*TbShopType
-	err := m.QueryRowsNoCache(&resp, "select "+tbShopTypeRows+" from "+m.table)
+	err := m.QueryRowsNoCache(&resp, "select "+tbShopTypeRows+" from "+m.table+" order by sort asc")
 	if err != nil {
 		return nil, err
 	}
