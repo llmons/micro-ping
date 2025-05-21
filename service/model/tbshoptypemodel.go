@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"github.com/zeromicro/go-zero/core/stores/cache"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )
@@ -28,10 +29,10 @@ func NewTbShopTypeModel(conn sqlx.SqlConn, c cache.CacheConf, opts ...cache.Opti
 }
 
 func (m *defaultTbShopTypeModel) RetrieveAll() ([]*TbShopType, error) {
-	var resp []*TbShopType
-	err := m.QueryRowsNoCache(&resp, "select "+tbShopTypeRows+" from "+m.table+" order by sort asc")
+	var shopTypeList []*TbShopType
+	err := m.QueryRowsNoCache(&shopTypeList, fmt.Sprintf("select %s from %s order by sort asc", tbShopTypeRows, m.table))
 	if err != nil {
 		return nil, err
 	}
-	return resp, nil
+	return shopTypeList, nil
 }
