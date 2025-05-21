@@ -4,7 +4,7 @@
 package types
 
 type ReqGetShopById struct {
-	Id int64 `path:"id"`
+	Id uint64 `path:"id"`
 }
 
 type ReqGetShopByName struct {

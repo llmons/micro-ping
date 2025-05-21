@@ -1,24 +1,24 @@
 syntax = "v1"
 
 type Shop {
-    Id int64 `json:"id"`
+    Id uint64 `json:"id"`
     Name string `json:"name"`
-    TypeId int64 `json:"type_id"`
+    TypeId uint64 `json:"type_id"`
     Images string `json:"images"`           // separated by comma
     Area string `json:"area"`
     Address string `json:"address"`
     X float64 `json:"x"`
     Y float64 `json:"y"`
     AvgPrice int64 `json:"avg_price"`
-    Sold int32 `json:"sold"`
-    Comments int32 `json:"comments"`
-    Score int32 `json:"score"`              // 1-5
+    Sold uint64 `json:"sold"`
+    Comments uint64 `json:"comments"`
+    Score uint64 `json:"score"`              // 1-5
     OpenHours string `json:"open_hours"`    // such as 10:00-22:00
 }
 
 type (
     ReqGetShopById {
-        Id int64 `path:"id"`
+        Id uint64 `path:"id"`
     }
 
     RespGetShopById {

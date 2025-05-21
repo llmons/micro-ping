@@ -2,6 +2,7 @@ package svc
 
 import (
 	"micro-ping/restful/internal/config"
+	"micro-ping/service/shop/shops"
 	"micro-ping/service/shop_type/shoptypeclient"
 	"micro-ping/service/user/userclient"
 
@@ -12,6 +13,7 @@ type ServiceContext struct {
 	Config      config.Config
 	ShopTypeRpc shoptypeclient.ShopTypeZrpcClient
 	UserRpc     userclient.User
+	ShopRpc     shops.ShopS
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -19,5 +21,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Config:      c,
 		ShopTypeRpc: shoptypeclient.NewShopTypeZrpcClient(zrpc.MustNewClient(c.ShopTypeRpcConf)),
 		UserRpc:     userclient.NewUser(zrpc.MustNewClient(c.UserRpcConf)),
+		ShopRpc:     shops.NewShopS(zrpc.MustNewClient(c.ShopRpcConf)),
 	}
 }

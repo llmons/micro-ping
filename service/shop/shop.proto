@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package shop;
+option go_package = "./shop";
+
+message Shop{
+  string name = 1;
+  uint64 type_id = 2;
+  string images = 3;
+  string area = 4;
+  string address = 5;
+  double x = 6;
+  double y = 7;
+  int64 avg_price = 8;
+  uint64 sold=9;
+  uint64 comments=10;
+  uint64 score = 11;
+  string open_hours = 12;
+}
+
+message ReqGetShopById {
+  uint64 id = 1;
+}
+
+message RespGetShopById {
+  Shop shop = 1;
+}
+
+service ShopS {
+  rpc GetShopById(ReqGetShopById) returns(RespGetShopById) {};
+}

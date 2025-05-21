@@ -17,3 +17,9 @@ UserRpcConf:
     Hosts:
       - localhost:2379
     Key: user.rpc
+
+ShopRpcConf:
+    Etcd:
+        Hosts:
+        - localhost:2379
+        Key: shop.rpc

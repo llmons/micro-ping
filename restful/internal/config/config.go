@@ -9,6 +9,7 @@ type Config struct {
 	rest.RestConf
 	ShopTypeRpcConf zrpc.RpcClientConf
 	UserRpcConf     zrpc.RpcClientConf
+	ShopRpcConf     zrpc.RpcClientConf
 	JwtAuth         struct {
 		AccessSecret string
 		AccessExpire int64
